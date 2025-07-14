@@ -14,14 +14,13 @@ jobs:
 
       - name: List open projects and update README
         uses: kaustubhgupta/readme-projects-display@master
+        
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: la-edit-app/.github
-          section-name: PROJECTS
-          topic: project
-          max-projects: 10
-          sort-by: updated
-          sort-direction: desc
+          gh_token: ${{ secrets.TOKEN }} # Use your personal access token
+          file_name: README.md           # (Optional) Defaults to README.md
+          max_repo_description: 100      # (Optional) Max description length
+          allow_forks: false             # (Optional) Exclude forks
+          project_sort_by: updated       # (Optional) Sort by 'updated', 
 
       - name: Commit and push changes
         run: |
