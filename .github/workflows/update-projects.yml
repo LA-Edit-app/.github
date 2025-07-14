@@ -1,0 +1,32 @@
+name: Update Open Projects in README
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Runs daily at 6:00 UTC
+  workflow_dispatch:      # Allows manual triggering
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: List open projects and update README
+        uses: JamesIves/github-projects-section@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: la-edit-app/.github
+          section-name: PROJECTS
+          topic: project
+          max-projects: 10
+          sort-by: updated
+          sort-direction: desc
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Update open projects section in README" || echo "No changes to commit"
+          git push
