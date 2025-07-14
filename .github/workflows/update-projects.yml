@@ -25,7 +25,7 @@ jobs:
       - name: Commit and push changes
         run: |
           git config --global user.email "eduardo.messias@outlook.com"
-          git config --global user.name "eduardomessias"
+          git config --global user.name "la-edit-app"
           git add .
           git commit -m "Update open projects section in README" || echo "No changes to commit"
           git push
