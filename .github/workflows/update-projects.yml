@@ -17,7 +17,7 @@ jobs:
         
         with:
           gh_token: ${{ secrets.TOKEN }} # Use your personal access token
-          file_name: README.md           # (Optional) Defaults to README.md
+          file_name: profile/README.md           # (Optional) Defaults to README.md
           max_repo_description: 100      # (Optional) Max description length
           allow_forks: false             # (Optional) Exclude forks
           project_sort_by: updated       # (Optional) Sort by 'updated', 
